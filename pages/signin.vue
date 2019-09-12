@@ -55,7 +55,7 @@ export default {
   layout: "login",
   data: () => ({
     passwordRules: [
-      v => v && v.length > 4 || "パスワードは4文字以上です",
+      v =>v && v.length >= 4 || "パスワードは4文字以上です",
       v => /[0-9]/.test(v) || "パスワードは1文字以上数字を含みます",
     ],
   }),

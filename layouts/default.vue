@@ -12,7 +12,8 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn class="title" nuxt to="login" text>{{ account | name }}様</v-btn>
+        <p class="body-1 my-5">{{ account | name }}様</p>
+        <v-btn class="title" nuxt to="login" text>ログアウト</v-btn>
       </v-toolbar-items>
     </v-app-bar>
     <v-content>

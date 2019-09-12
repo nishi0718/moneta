@@ -10,7 +10,7 @@
           label="金額"
           type="number"
           :value="amount"
-          :rules="[v => v < account.total - fee || '残高が不足しています']"
+          :rules="amountsRules"
           @input="$store.commit('transfer/amount', $event)"
         />
         <v-btn nuxt dark color="primary" :disabled="!valid" @click="transfer">
@@ -30,6 +30,13 @@ export default {
     valid: true,
   }),
   computed: {
+    amountsRules() {
+      return [
+        v => Number.isInteger(v) || '正しく入力してください',
+        v => v < this.account.total - this.fee || '残高が不足しています',
+        v => v > 0 || '正しく入力してください',
+      ];
+    },
     ...mapGetters("transfer", ["fee", "amount"]),
     ...mapGetters("login", ["account"]),
   },
